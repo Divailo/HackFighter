@@ -6,4 +6,13 @@
     <string name="title_activity_create_fighter">CreateFighterActivity</string>
 
     <string name="hello_world">Hello world!</string>
+    <string-array name="countries">
+        <item>Bulgaria</item>
+        <item>United States of America</item>
+        <item>United Kingdom</item>
+        <item>Afghanistan</item>
+        <item>Uzbekhistan</item>
+        <item>Poland</item>
+        <item>Mozambique</item>
+    </string-array>
 </resources>
