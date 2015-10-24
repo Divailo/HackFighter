@@ -5,10 +5,19 @@ package uk.co.ivaylokhr.hackfighter;
  */
 public class Character {
 
+    private int age;
+    private String country;
+    private String programmingLanguage;
+
     private int health, power, agility;
     private String name;
+    //zname
 
-    public Character(){}
+    public Character(int age, String country, String programmingLanguage){
+        this.age = age;
+        this.country = country;
+        this.programmingLanguage = programmingLanguage;
+    }
 
     //Mechanics
 
