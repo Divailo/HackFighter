@@ -1,27 +1,46 @@
 package uk.co.ivaylokhr.hackfighter;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.method.KeyListener;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
 
 public class CreateFighterActivity extends AppCompatActivity {
 
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
-
+    SharedPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_fighter);
+        Spinner spinner = (Spinner) findViewById(R.id.spinnerCountry);
+        ArrayAdapter<CharSequence> adapter  = ArrayAdapter.createFromResource(this,R.array.countries,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        prefs  = this.getSharedPreferences("uk.co.ivaylokhr.hackfighter", Context.MODE_PRIVATE);
     }
 
     @Override
@@ -89,6 +108,30 @@ public class CreateFighterActivity extends AppCompatActivity {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
                     .show();
         }
+
+    }
+
+    public void nextActivity(View v){
+        Intent intent = new Intent(CreateFighterActivity.this,ChooseHeroActivity.class);
+
+        Bitmap bmp =  ((BitmapDrawable)((ImageView) findViewById(R.id.imgView)).getDrawable()).getBitmap();
+
+//        prefs.edit().putString("FIGHTER_NAME", String.valueOf(((EditText) findViewById(R.id.editTextName)).getText()));
+//        prefs.edit().putString("FIGHTER_DAY", String.valueOf(((EditText) findViewById(R.id.editText)).getText()));
+//        prefs.edit().putString("FIGHTER_MONTH", String.valueOf(((EditText) findViewById(R.id.editText2)).getText()));
+//        prefs.edit().putString("FIGHTER_YEAR", String.valueOf(((EditText) findViewById(R.id.editText3)).getText()));
+//        prefs.edit().putString("FIGHTER_COUNTRY",((Spinner)findViewById(R.id.spinnerCountry)).getSelectedItem().toString());
+        intent.putExtra("FIGHTER_AVATAR",bmp);
+        intent.putExtra("FIGHTER_NAME", ((EditText) findViewById(R.id.editTextName)).getText());
+        intent.putExtra("FIGHTER_DAY", ((EditText) findViewById(R.id.editText)).getText());
+        intent.putExtra("FIGHTER_MONTH",((EditText) findViewById(R.id.editText2)).getText());
+        intent.putExtra("FIGHTER_YEAR",((EditText) findViewById(R.id.editText3)).getText());
+        intent.putExtra("FIGHTER_COUNTRY",((Spinner)findViewById(R.id.spinnerCountry)).getSelectedItem().toString());
+
+        startActivity(intent);
+
+
+
 
     }
 

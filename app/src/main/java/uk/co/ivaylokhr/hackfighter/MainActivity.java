@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeActivity(View view){
-        Intent intent = new Intent(MainActivity.this, ChooseHeroActivity.class);
+        Intent intent = new Intent(MainActivity.this, CreateFighterActivity.class);
         startActivity(intent);
     }
 
