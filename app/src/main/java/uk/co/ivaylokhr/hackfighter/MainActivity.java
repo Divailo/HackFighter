@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     GridLayout gl;
     MediaPlayer mp;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,10 +75,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(mp.isPlaying()){
-                    stopMusic(v);
+                    mp.pause();
                 }
                 else {
-                    playMusic(v);
+                    mp.start();
                 }
             }
         });
@@ -125,11 +127,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void playMusic(View view){
-        mp.start();
-    }
-
     public void stopMusic(View view){
         mp.stop();
+    }
+
+    protected void onPause(){
+        super.onPause();
+        mp.pause();
     }
 }
