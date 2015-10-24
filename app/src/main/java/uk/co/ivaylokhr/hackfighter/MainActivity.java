@@ -1,6 +1,8 @@
 package uk.co.ivaylokhr.hackfighter;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -8,13 +10,26 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    Button newGame;
+    CoordinatorLayout cl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        cl = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
+        newGame = new Button(this);
+        newGame.setText("New game");
+        newGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeActivity(v);
+            }
+        });
+        cl.addView(newGame);
 
     }
 
@@ -39,4 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void changeActivity(View view){
+        Intent intent = new Intent(MainActivity.this, ChooseHeroActivity.class);
+        startActivity(intent);
+    }
+
+
 }
