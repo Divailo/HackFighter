@@ -36,6 +36,8 @@ public class ChooseCharacterActivity extends AppCompatActivity {
         findViews();
         //znameto
 //        heroLayout.setBackground();
+        //String variable = "variable"
+        //int Button = getResources().getIdentifier(variable, "drawable", getPackageName());
     }
 
     private void findViews(){
@@ -43,5 +45,18 @@ public class ChooseCharacterActivity extends AppCompatActivity {
         heroLayout = (FrameLayout) findViewById(R.id.heroLayout);
         portrait = (ImageView) findViewById(R.id.portrait);
         grid = (GridLayout) findViewById(R.id.gridLayout);
+    }
+
+    private void fillTheGrid(){
+        int counter = 0;
+        for(int i = 0; i < 8; ++i){
+            for(int j = 0; j < 8; ++j){
+                ImageView iv = new ImageView(this);
+                iv.setId(50+ counter);
+                ViewGroup.LayoutParams imageParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                grid.addView(iv, i, j);
+                counter++;
+            }
+        }
     }
 }
