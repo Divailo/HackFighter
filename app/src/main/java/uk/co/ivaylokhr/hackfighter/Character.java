@@ -90,11 +90,4 @@ public class Character {
         return name+ " "+age+" s:"+strength+" a:"+agility+" l:"+luck;
     }
 
-    public static void main(String[] args){
-        Character joeNash = new Character(null,"Joe Nash", 25, "United Kingdom");
-        System.out.println(joeNash);
-        becomeJoe(joeNash);
-        System.out.println(joeNash);
-    }
-
 }

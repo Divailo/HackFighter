@@ -37,7 +37,7 @@ public class CreateFighterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_fighter);
         ImageView iv = (ImageView) findViewById(R.id.imgView);
-        iv.setBackgroundResource(R.drawable.kappa);
+        iv.setBackgroundResource(R.drawable.roskataivo);
 
         Spinner spinner = (Spinner) findViewById(R.id.spinnerCountry);
         ArrayAdapter<CharSequence> adapter  = ArrayAdapter.createFromResource(this,R.array.countries,android.R.layout.simple_spinner_item);

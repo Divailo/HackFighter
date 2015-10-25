@@ -27,11 +27,6 @@
             android:parentActivityName=".CreateFighterActivity">
         </activity>
         <activity
-            android:name=".ChooseHeroActivity"
-            android:label="@string/title_activity_choose_hero"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
             android:name=".CreateFighterActivity"
             android:label="@string/title_activity_create_fighter"
             android:parentActivityName=".MainActivity" >
