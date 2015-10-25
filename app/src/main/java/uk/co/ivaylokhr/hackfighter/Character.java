@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -22,8 +23,12 @@ public class Character {
     private SecureRandom number;
     //zname
 
-    public Character(Bitmap avatar, String name, int age, String country) throws NoSuchAlgorithmException {
-        number = SecureRandom.getInstance("SHA1PRNG");
+    public Character(Bitmap avatar, String name, int age, String country) {
+        try {
+            number = SecureRandom.getInstance("SHA1PRNG");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         this.age = age;
         this.name = name;
         this.avatar = avatar;
@@ -47,7 +52,7 @@ public class Character {
             strength += avatar.toString().hashCode() % 12;
             agility += avatar.getClass().hashCode() % 12;
             luck += avatar.getConfig().hashCode() % 12;
-            health += avatar.getNinePatchChunk().hashCode() % 18;
+            health += Arrays.hashCode(avatar.getNinePatchChunk()) % 18;
         }
     }
 
@@ -139,6 +144,10 @@ public class Character {
             c.health = 1000;
             c.luck = 99;
         }
+    }
+
+    public Bitmap getAvatar(){
+        return avatar;
     }
 
     public String toString() {

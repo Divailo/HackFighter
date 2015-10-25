@@ -19,6 +19,8 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,7 +29,7 @@ import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 
-public class CreateFighterActivity extends AppCompatActivity {
+public class CreateFighterActivity extends AppCompatActivity implements ImageView.OnClickListener {
 
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
@@ -37,7 +39,8 @@ public class CreateFighterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_fighter);
         ImageView iv = (ImageView) findViewById(R.id.imgView);
-        iv.setBackgroundResource(R.drawable.roskataivo);
+        iv.setBackgroundResource(R.drawable.kappa);
+        iv.setOnClickListener(this);
 
         Spinner spinner = (Spinner) findViewById(R.id.spinnerCountry);
         ArrayAdapter<CharSequence> adapter  = ArrayAdapter.createFromResource(this,R.array.countries,android.R.layout.simple_spinner_item);
@@ -143,10 +146,9 @@ public class CreateFighterActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
+    @Override
+    public void onClick(View v) {
+        Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+        findViewById(R.id.imgView).startAnimation(shake);
+    }
 }
