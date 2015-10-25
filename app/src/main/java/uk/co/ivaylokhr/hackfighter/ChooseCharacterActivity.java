@@ -2,6 +2,7 @@ package uk.co.ivaylokhr.hackfighter;
 
 import android.app.FragmentTransaction;
 import android.graphics.Point;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -18,36 +22,26 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class ChooseCharacterActivity extends AppCompatActivity implements OnMapReadyCallback {
-    MapFragment mapFragment;
-    LinearLayout mainLayout;
+public class ChooseCharacterActivity extends AppCompatActivity {
+
+    private LinearLayout mainLayout;
+    private FrameLayout heroLayout;
+    private ImageView portrait;
+    private GridLayout grid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_hero);
-
-        mapFragment = (MapFragment) getFragmentManager()
-                .findFragmentById(R.id.mapFragment);
-        mapFragment.getMapAsync(this);
-
-
+        findViews();
+        //znameto
+//        heroLayout.setBackground();
     }
 
-    private void setFragmentWidth(){
+    private void findViews(){
         mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
-        ViewGroup.LayoutParams mapParams = mapFragment.getView().getLayoutParams();
-        Point size = new Point();
-        Display display = getWindowManager().getDefaultDisplay();
-        display.getSize(size);
-        int screenWidth = size.x;
-        mapParams.height = screenWidth;
-    }
-
-    @Override
-    public void onMapReady(GoogleMap mapFragment) {
-        mapFragment.addMarker(new MarkerOptions()
-                .position(new LatLng(0, 0))
-                .title("Marker"));
+        heroLayout = (FrameLayout) findViewById(R.id.heroLayout);
+        portrait = (ImageView) findViewById(R.id.portrait);
+        grid = (GridLayout) findViewById(R.id.gridLayout);
     }
 }

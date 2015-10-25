@@ -11,17 +11,16 @@
     tools:context="uk.co.ivaylokhr.hackfighter.ChooseHeroActivity"
     android:id="@+id/mainLayout">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="com.google.android.gms.maps.MapFragment"
-        android:id="@+id/mapFragment" />
+        android:id="@+id/heroLayout">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/description" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/portrait" />
+    </FrameLayout>
 
     <GridLayout
         android:layout_width="match_parent"
@@ -33,10 +32,10 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FIGHT"
+            android:text="@string/fight"
             android:id="@+id/fightButton"
-            android:layout_columnWeight="7"
-            android:layout_rowWeight="1" />
+            android:layout_columnSpan="7"
+            android:layout_rowSpan="1" />
     </GridLayout>
 
 </LinearLayout>
