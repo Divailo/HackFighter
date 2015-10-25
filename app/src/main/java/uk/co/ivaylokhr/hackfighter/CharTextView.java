@@ -1,5 +1,6 @@
 package uk.co.ivaylokhr.hackfighter;
 
+import android.content.Context;
 import android.widget.TextView;
 
 /**
@@ -7,7 +8,7 @@ import android.widget.TextView;
  */
 public class CharTextView extends TextView {
 
-    public CharTextView(Character hero){
-        this.setText();
+    public CharTextView(Context context) {
+        super(context);
     }
 }
