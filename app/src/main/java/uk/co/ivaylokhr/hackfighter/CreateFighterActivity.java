@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.method.KeyListener;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +36,9 @@ public class CreateFighterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_fighter);
+        ImageView iv = (ImageView) findViewById(R.id.imgView);
+        iv.setBackgroundResource(R.drawable.kappa);
+
         Spinner spinner = (Spinner) findViewById(R.id.spinnerCountry);
         ArrayAdapter<CharSequence> adapter  = ArrayAdapter.createFromResource(this,R.array.countries,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -112,22 +116,25 @@ public class CreateFighterActivity extends AppCompatActivity {
     }
 
     public void nextActivity(View v){
-        Intent intent = new Intent(CreateFighterActivity.this,ChooseHeroActivity.class);
+        Intent intent = new Intent(CreateFighterActivity.this,ChooseCharacterActivity.class);
 
         Bitmap bmp =  ((BitmapDrawable)((ImageView) findViewById(R.id.imgView)).getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG,100,stream);
+        byte[] byteArray = stream.toByteArray();
 
 //        prefs.edit().putString("FIGHTER_NAME", String.valueOf(((EditText) findViewById(R.id.editTextName)).getText()));
 //        prefs.edit().putString("FIGHTER_DAY", String.valueOf(((EditText) findViewById(R.id.editText)).getText()));
 //        prefs.edit().putString("FIGHTER_MONTH", String.valueOf(((EditText) findViewById(R.id.editText2)).getText()));
 //        prefs.edit().putString("FIGHTER_YEAR", String.valueOf(((EditText) findViewById(R.id.editText3)).getText()));
 //        prefs.edit().putString("FIGHTER_COUNTRY",((Spinner)findViewById(R.id.spinnerCountry)).getSelectedItem().toString());
-        intent.putExtra("FIGHTER_AVATAR",bmp);
+        intent.putExtra("FIGHTER_AVATAR", byteArray);
         intent.putExtra("FIGHTER_NAME", ((EditText) findViewById(R.id.editTextName)).getText());
         intent.putExtra("FIGHTER_DAY", ((EditText) findViewById(R.id.editText)).getText());
         intent.putExtra("FIGHTER_MONTH",((EditText) findViewById(R.id.editText2)).getText());
         intent.putExtra("FIGHTER_YEAR",((EditText) findViewById(R.id.editText3)).getText());
         intent.putExtra("FIGHTER_COUNTRY",((Spinner)findViewById(R.id.spinnerCountry)).getSelectedItem().toString());
-
+        Log.e("NEXT","ACTIVITY ??");
         startActivity(intent);
 
 
