@@ -11,7 +11,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imgView" />
+            android:id="@+id/imgView"
+            />
 
         <Button
             android:layout_width="wrap_content"
@@ -24,7 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/editTextName"
-            android:hint="Name" />
+            android:hint="Name"
+            android:text="A" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -37,7 +39,8 @@
                 android:inputType="number"
                 android:ems="10"
                 android:id="@+id/editText"
-                android:hint="Day" />
+                android:hint="Day"
+                android:text="1" />
 
             <EditText
                 android:layout_width="58dp"
@@ -45,7 +48,8 @@
                 android:inputType="number"
                 android:ems="10"
                 android:id="@+id/editText2"
-                android:hint="Month" />
+                android:hint="Month"
+                android:text="2" />
 
             <EditText
                 android:layout_width="61dp"
@@ -53,7 +57,8 @@
                 android:inputType="number"
                 android:ems="10"
                 android:id="@+id/editText3"
-                android:hint="Year" />
+                android:hint="Year"
+                android:text="3" />
         </LinearLayout>
 
         <Spinner

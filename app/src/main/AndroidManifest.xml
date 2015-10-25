@@ -26,6 +26,11 @@
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
+            android:name=".ChooseCharacterActivity"
+            android:label="ChooseCharacterActivity"
+            android:parentActivityName=".CreateFighterActivity">
+        </activity>
+        <activity
             android:name=".ChooseHeroActivity"
             android:label="@string/title_activity_choose_hero"
             android:theme="@style/AppTheme.NoActionBar" >
