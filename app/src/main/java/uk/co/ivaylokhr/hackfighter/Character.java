@@ -145,25 +145,4 @@ public class Character {
         return name + " h:" + health + " s:" + strength + " a:" + agility + " l:" + luck;
     }
 
-<<<<<<< HEAD
-=======
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        Character joeNash = new Character(null, "Joe Nash", 25, "United Kingdom");
-        int rosenWins=0;
-        int martoWins=0;
-        for(int i=0;i<1000;i++){
-
-            Character rosen = new Character(null, "Rosen Dangov", 19, "Bulgaria");
-            Character marto = new Character(null, "Martin Vuchkov", 19, "Uzbekistan");
-            if(Fight.between(rosen,marto).equals(rosen)){
-                rosenWins++;
-            }
-            else{
-                martoWins++;
-            }
-        }
-        System.out.println(rosenWins+"---"+martoWins);
-    }
-
->>>>>>> c77118f77e78a220ad47779fd37d25a86290e61a
 }
